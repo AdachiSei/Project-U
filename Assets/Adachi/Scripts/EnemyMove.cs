@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HumanMove : MonoBehaviour
+public class EnemyMove : MonoBehaviour
 {
     /// <summary>剛体</summary>
     Rigidbody2D _rb;
@@ -16,40 +16,26 @@ public class HumanMove : MonoBehaviour
     float _timer;
     /// <summary>タイムリミット</summary>
     float _timeLimit = 10f;
-    /// <summary>人の移動方向の切り替え(trueなら左）</summary>
-    [SerializeField, Header("人の移動方向の切り替え(trueなら左）")] bool _switch;
-    void Start()
+
+    private void OnEnable()
     {
+        _timer = 0f;
         _rb = GetComponent<Rigidbody2D>();
         //スピードをランダムで決める
         _speed = Random.Range(_minimumSpeed,_maximumSpeed);
     }
     private void Update()
     {
-        if (_switch)
-        {
-            //左に移動
-            _rb.velocity = Vector2.left * _speed;
-        }
-        else
-        {
-            //下に移動
-            _rb.velocity = Vector2.down * _speed;
-        }
+        //移動
+        _rb.velocity = gameObject.transform.rotation * new Vector3(0, -_speed, 0);
         //タイマー
         _timer += Time.deltaTime;
 
-        /*//時間制限が来たら
-        if(_timer >= _timeLimit)
+        //時間制限が来たら
+        if (_timer >= _timeLimit)
         {
-            //オブジェクトを消す
-            Destroy(gameObject);
-        }*/
-         
-    }
-    void OnBecameInvisible()
-    {
-        //画面外に行ったら非アクティブにする
-        gameObject.SetActive(false);
+            //非アクティブにする
+            gameObject.SetActive(false);
+        }
     }
 }
