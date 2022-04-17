@@ -28,13 +28,20 @@ public class EnemyGenerator : MonoBehaviour
     Vector3 _pos;
     /// <summary>判定回数の制御</summary>
     const float _JUDGMENTTIME = 1 / 60;
+    /// <summary>生成するオブジェクトの向きの切り替え(trueなら真っ直ぐ）</summary>
+    [SerializeField,Header("生成するオブジェクトの向きの切り替え(trueなら真っ直ぐ）")]bool _switch;
+    /// <summary>enemyのタグ</summary>
+    [SerializeField, Header("enemyのタグ")] string _enemyTag;
 
     void Start()
     {
-        StartCoroutine(Generator());
+        //enemyを保持する空のオブジェクトを生成
+        _enemys = new GameObject(_enemyTag).transform; 
+
+        //StartCoroutine(Generator());
     }
 
-    IEnumerator Generator()
+    /*IEnumerator Generator()
     {
         yield return new WaitForSeconds(_beginTime);
         Debug.Log("Start!");
@@ -49,9 +56,51 @@ public class EnemyGenerator : MonoBehaviour
             //生成頻度をランダムで決める
             _intervalTime = Random.Range(_minimumTime,_maximumTime);
             //生成する
-            Instantiate(_object[_objectNumber],_pos, Quaternion.identity);
+            if(_switch)
+            {
+                Instantiate(_object[_objectNumber], _pos, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(_object[_objectNumber], _pos, _object[_objectNumber].transform.rotation);
+            }
             //オブジェクト生成の時間間隔
             yield return new WaitForSeconds(_intervalTime);
         }       
+    }*/
+    //生成する弾
+
+    //弾を保持（プーリング）する空のオブジェクト
+    Transform _enemys;
+    
+    void Update()
+    {
+        //弾生成関数を呼び出し
+        InstBullet(transform.position, transform.rotation);
+    }
+
+    /// <summary>
+    /// 弾生成関数
+    /// </summary>
+    /// <param name="pos">生成位置</param>
+    /// <param name="rotation">生成時の回転</param>
+    void InstBullet(Vector3 pos, Quaternion rotation)
+    {
+        //アクティブでないオブジェクトをenemyの中から探索
+        foreach (Transform t in _enemys)
+        {
+            if (!t.gameObject.activeSelf)
+            {
+                //非アクティブなオブジェクトの位置と回転を設定
+                t.SetPositionAndRotation(pos, rotation);
+                //アクティブにする
+                t.gameObject.SetActive(true);
+                return;
+            }
+        }
+        //非アクティブなオブジェクトがない場合新規生成
+
+        //生成時にbulletsの子オブジェクトにする
+        Instantiate(_object[0], pos, rotation, _enemys);
     }
 }
