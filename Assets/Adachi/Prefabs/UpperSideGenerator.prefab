@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 4969776688041576786}
   - component: {fileID: 4969776688041576785}
   m_Layer: 0
-  m_Name: SecondGenerator
+  m_Name: UpperSideGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4969776688041576786
 Transform:
   m_ObjectHideFlags: 0
@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy:
-  - {fileID: 1968883219962846675, guid: 9bbb62a165af26a49aa32b04254ca856, type: 3}
-  - {fileID: 1971132313552808531, guid: b747a4e02099ade49a2687c7ac6ec38c, type: 3}
+  - {fileID: 7415266326199951040, guid: 9235065e9b73c6c47bfe50a56d39944e, type: 3}
+  - {fileID: 1650448092582836402, guid: b239c3d2a42c26c46a989ebd54f653a7, type: 3}
   _beginTime: 0
-  _maximumTime: 5
-  _minimumTime: 0.1
+  _maximumTime: 0.1
+  _minimumTime: 3
   _upperLimit: 7
   _downLimit: 7
   _rightLimit: 8

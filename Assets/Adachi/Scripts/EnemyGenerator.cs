@@ -35,16 +35,19 @@ public class EnemyGenerator : MonoBehaviour
 
     void Start()
     {
-        //enemyを保持する空のオブジェクトを生成
-        _enemys = new GameObject(_enemysName).transform;      
+        /*//enemyを保持する空のオブジェクトを生成
+        _enemys = new GameObject(_enemysName).transform;
+        for(var i = 0; i < _enemy.Count; i++)
+        {
+            Instantiate(_enemy[i]);
+            _enemy[i].gameObject.SetActive(false);
+        }*/
+        
     }
+
     void OnEnable()
     {
         StartCoroutine(Generator());
-    }
-    void Update()
-    {
-
     }
 
     IEnumerator Generator()
@@ -91,7 +94,7 @@ public class EnemyGenerator : MonoBehaviour
         }
         //非アクティブなオブジェクトがない場合新規生成
 
-        //生成時にbulletsの子オブジェクトにする
+        //生成時にenemyの子オブジェクトにする
         Instantiate(_enemy[_enemyNumber], position, rotation, _enemys);
     }
 }

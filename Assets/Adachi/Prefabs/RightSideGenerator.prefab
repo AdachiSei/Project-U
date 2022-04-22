@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 1259728305468669598}
   - component: {fileID: 1259728305468669597}
   m_Layer: 0
-  m_Name: Generator
+  m_Name: RightSideGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1259728305468669598
 Transform:
   m_ObjectHideFlags: 0
@@ -44,8 +44,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy:
-  - {fileID: 7368945897425831506, guid: 0a919fea990fd9c4faccce3a9fa220a3, type: 3}
-  - {fileID: 798062168643202538, guid: 541643339958195479fe218694a4bc08, type: 3}
+  - {fileID: 3338084230460089498, guid: 06e1f70dc57b4544b9217132b8efb5f3, type: 3}
+  - {fileID: 5055707933034672174, guid: 1a296ff81ee3c3b49923156cc0ab9a8f, type: 3}
+  - {fileID: 3243620018523494547, guid: de6f8915d2a75a448b1c4f2f0a65e019, type: 3}
+  - {fileID: 6206851405285182792, guid: fa4ddfe2be5618841b870d4569d3f5a4, type: 3}
+  - {fileID: 8450602716152249757, guid: 0b2ceb5978e906945856d01354642715, type: 3}
+  - {fileID: 7313992284485063422, guid: 27b2f8af468c02844a8532866c20327d, type: 3}
+  - {fileID: 3763410043662632569, guid: a619a49507a84ae47afba59937b5fe9b, type: 3}
   _beginTime: 0
   _maximumTime: 0.1
   _minimumTime: 3

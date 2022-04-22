@@ -48,3 +48,4 @@ MonoBehaviour:
   _generator:
   - {fileID: 1259728305468669596, guid: c42f51b2691ff684db3acafd65b6a034, type: 3}
   - {fileID: 4969776688041576784, guid: 58f0d3131b381314b823c09199401882, type: 3}
+  _waitTime: 1
