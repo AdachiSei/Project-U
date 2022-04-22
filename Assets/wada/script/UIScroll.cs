@@ -14,9 +14,9 @@ public class UIScroll : MonoBehaviour
     {
         _rectTransform.anchoredPosition -= new Vector2(Time.deltaTime * _ScrollSpeed, 0 );
 
-        if (_rectTransform.anchoredPosition.x <= - 549f)
+        if (_rectTransform.anchoredPosition.x <= - 1920f)
         {
-            _rectTransform.anchoredPosition = new Vector2(650f, 0);
+            _rectTransform.anchoredPosition = new Vector2(2210f, 0);
         }
     }
 }
