@@ -1453,7 +1453,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 72.37, y: 97.6}
-  m_SizeDelta: {x: 1080.2, y: 580.5}
+  m_SizeDelta: {x: 1524.9, y: 604.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2122946273
 MonoBehaviour:
@@ -1476,19 +1476,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 105
+    m_Font: {fileID: 12800000, guid: 777c77ab17b9b6a4d967dd7f1335a737, type: 3}
+    m_FontSize: 137
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 120
+    m_MaxSize: 300
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u96E3\u6613\u5EA6\u3092\u3048\u3089\u3093\u3067\u306D!!"
+  m_Text: Select the Difficulty!!
 --- !u!222 &2122946274
 CanvasRenderer:
   m_ObjectHideFlags: 0
