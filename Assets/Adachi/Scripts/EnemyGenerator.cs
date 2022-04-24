@@ -35,14 +35,8 @@ public class EnemyGenerator : MonoBehaviour
 
     void Start()
     {
-        /*//enemyを保持する空のオブジェクトを生成
+        //enemyを保持する空のオブジェクトを生成
         _enemys = new GameObject(_enemysName).transform;
-        for(var i = 0; i < _enemy.Count; i++)
-        {
-            Instantiate(_enemy[i]);
-            _enemy[i].gameObject.SetActive(false);
-        }*/
-        
     }
 
     void OnEnable()
