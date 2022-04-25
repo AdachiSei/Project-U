@@ -6,6 +6,10 @@ public class EnemyMove : MonoBehaviour
 {
     /// <summary>剛体</summary>
     Rigidbody2D _rb;
+    /// <summary>enemyの絵</summary>
+    [SerializeField, Header("enemyの絵")] List<Sprite> _enemySprite = new List<Sprite>();
+    /// <summary>enemyのアニメーター</summary>
+    [SerializeField,Header("enemyのアニメーター")]List<RuntimeAnimatorController> _enemyAnim = new List<RuntimeAnimatorController>();
     /// <summary>移動方向移動方向(trueならスプライトの下方向）</summary>
     [SerializeField,Header("移動方向(trueならスプライトの下方向）")]bool _dir = true;
     /// <summary>enemyのスピード</summary>
@@ -22,22 +26,36 @@ public class EnemyMove : MonoBehaviour
     [SerializeField,Header("アニメーションのスピードを補正する（_speed / _animSpeedOffset）")]float _animSpeedOffset = 10f;
     /// <summary>アニメーター</summary>
     Animator _animator;
-    
+    /// <summary>スプライトレンダラー</summary>
+    SpriteRenderer _sprite;
+    int _number;
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
+        _sprite = GetComponent<SpriteRenderer>();
+        //enemyの見た目を変える
+        _number = Random.Range(0, _enemySprite.Count);
+        _sprite.sprite = _enemySprite[_number];
+        if (_animator != null) _animator.runtimeAnimatorController = _enemyAnim[_number];
     }
 
     private void OnEnable()
     {
-        _timer = 0f;     
+        Debug.Log("OnEnable");
+        _timer = 0f;
         //スピードをランダムで決める
-        _speed = Random.Range(_minimumSpeed,_maximumSpeed);
+        _speed = Random.Range(_minimumSpeed, _maximumSpeed);
+        //enemyのアニメーションを変える
+        _number = Random.Range(0, _enemySprite.Count);      
+        if (_animator != null) _animator.runtimeAnimatorController = _enemyAnim[_number];
     }
 
     private void Update()
-    {     
+    {
+        //enemyの見た目を変える
+        if (_timer == 0) _sprite.sprite = _enemySprite[_number];
         //移動速度によってアニメーションのスピードを変える
         if(_animator != null)_animator.speed = _speed / _animSpeedOffset;
 
