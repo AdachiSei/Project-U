@@ -13,7 +13,7 @@ public class ResqueCarMove : MonoBehaviour
     float _xInput;
 
     /// <summary>救急車のスピードのメンバ変数</summary>
-    float speed;
+    float _speed;
 
     /// <summary>救急車の横操作の移動量のメンバ変数</summary>
     [SerializeField,Header("横操作の移動量")] float _inputSpeed;
@@ -42,21 +42,21 @@ public class ResqueCarMove : MonoBehaviour
         
         if (_xInput == 0) // 何も操作してないとき
         {
-            speed = 0; // 救急車のスピードを0にする
+            _speed = 0; // 救急車のスピードを0にする
         }
         else if (_xInput > 0) //右移動操作のとき
         {
-            speed = _inputSpeed; // 救急車のスピードを入力した方向に加える
+            _speed = _inputSpeed; // 救急車のスピードを入力した方向に加える
 
             transform.localScale = new Vector3(1, -1, 1); // 救急車の向きを右にする
         }
         else if (_xInput < 0) //左移動操作のとき
         {
-            speed = _inputSpeed * -1; // 救急車のスピードを入力した方向とは逆の方に加える
+            _speed = _inputSpeed * -1; // 救急車のスピードを入力した方向とは逆の方に加える
 
             transform.localScale = new Vector3(1, 1, 1); // 救急車の向きを左にする
         }
         
-        _rb2d.velocity = new Vector2(speed, _rb2d.velocity.y); // 救急車を移動 Vextor2(x軸スピード、y軸スピード(元のまま))
+        _rb2d.velocity = new Vector2(_speed, _rb2d.velocity.y); // 救急車を移動 Vextor2(x軸スピード、y軸スピード(元のまま))
     }
 }
