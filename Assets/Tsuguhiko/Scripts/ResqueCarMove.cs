@@ -7,7 +7,7 @@ using UnityEngine;
 public class ResqueCarMove : MonoBehaviour
 {
     /// <summary>救急車のRigidBody2Dのメンバ変数</summary>
-    Rigidbody2D _rb2d;
+    Rigidbody2D _rb2d ;
 
     /// <summary>救急車の横操作のメンバ変数</summary>
     float _xInput;
