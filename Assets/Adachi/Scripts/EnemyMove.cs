@@ -35,30 +35,31 @@ public class EnemyMove : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
-        //enemyの見た目を変える
-        _number = Random.Range(0, _enemySprite.Count);
-        _sprite.sprite = _enemySprite[_number];
-        if (_animator != null) _animator.runtimeAnimatorController = _enemyAnim[_number];
     }
 
     private void OnEnable()
     {
-        Debug.Log("OnEnable");
         _timer = 0f;
         //スピードをランダムで決める
         _speed = Random.Range(_minimumSpeed, _maximumSpeed);
-        //enemyのアニメーションを変える
-        _number = Random.Range(0, _enemySprite.Count);      
-        if (_animator != null) _animator.runtimeAnimatorController = _enemyAnim[_number];
     }
 
     private void Update()
     {
         //enemyの見た目を変える
-        if (_timer == 0) _sprite.sprite = _enemySprite[_number];
-        //移動速度によってアニメーションのスピードを変える
-        if(_animator != null)_animator.speed = _speed / _animSpeedOffset;
-
+        if (_timer == 0)
+        {
+            _number = Random.Range(0, _enemySprite.Count);
+            _sprite.sprite = _enemySprite[_number];
+            //アニメーションがあったら変える
+            if (_animator != null)
+            {
+                _animator.runtimeAnimatorController = _enemyAnim[_number];
+                //移動速度によってアニメーションのスピードを変える
+                _animator.speed = _speed / _animSpeedOffset;
+            }            
+        }
+        
         //移動
         if(_dir)
         {           

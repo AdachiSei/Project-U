@@ -26,8 +26,7 @@ public class GeneratorController : MonoBehaviour
     void Update()
     {
         //タイマー
-        _timer += Time.deltaTime;
-       
+        _timer += Time.deltaTime;    
     }
 
     /// <summary>
@@ -42,16 +41,7 @@ public class GeneratorController : MonoBehaviour
             if (_timer >= _timeLimit)
             {
                 //片方のジェネレーターが存在していたら
-                if (_generator[1].activeSelf)
-                {
-                    //非表示にする（赤信号）
-                    _generator[1].SetActive(false);
-                    //待機時間（黄色信号）
-                    yield return new WaitForSeconds(_waitTime);
-                    //表示する（青信号）
-                    _generator[0].SetActive(true);
-                }
-                else
+                if (_generator[0].activeSelf)
                 {
                     //非表示にする（赤信号）
                     _generator[0].SetActive(false);
@@ -59,6 +49,15 @@ public class GeneratorController : MonoBehaviour
                     yield return new WaitForSeconds(_waitTime);
                     //表示する（青信号）
                     _generator[1].SetActive(true);
+                }
+                else
+                {
+                    //非表示にする（赤信号）
+                    _generator[1].SetActive(false);
+                    //待機時間（黄色信号）
+                    yield return new WaitForSeconds(_waitTime);
+                    //表示する（青信号）
+                    _generator[0].SetActive(true);
                 }
                 //タイマーをリセット
                 _timer = 0;
