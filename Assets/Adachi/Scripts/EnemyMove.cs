@@ -44,6 +44,12 @@ public class EnemyMove : MonoBehaviour
         _speed = Random.Range(_minimumSpeed, _maximumSpeed);
     }
 
+    private void OnBecameInvisible()
+    {
+        //画面外に行ったら非アクティブにする
+        gameObject.SetActive(false);
+    }
+
     private void Update()
     {
         //enemyの見た目を変える
@@ -72,7 +78,5 @@ public class EnemyMove : MonoBehaviour
 
         //タイマー
         _timer += Time.deltaTime;
-        //時間制限が来たら非アクティブにする
-        if (_timer >= _timeLimit)gameObject.SetActive(false);
     }
 }
