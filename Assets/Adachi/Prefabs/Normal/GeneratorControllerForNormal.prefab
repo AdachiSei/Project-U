@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5474699134439694478}
   - component: {fileID: 5474699134439694479}
   m_Layer: 0
-  m_Name: GeneratorController
+  m_Name: GeneratorControllerForNormal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

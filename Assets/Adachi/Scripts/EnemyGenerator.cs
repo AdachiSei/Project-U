@@ -47,7 +47,7 @@ public class EnemyGenerator : MonoBehaviour
     IEnumerator Generator()
     {
         yield return new WaitForSeconds(_beginTime);
-        Debug.Log("Start!");
+
         while (true)
         {
             //判定回数の制御
