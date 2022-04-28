@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>enemyを動かすスクリプト</summary>
+
 public class EnemyMove : MonoBehaviour
 {
     /// <summary>剛体</summary>
@@ -28,6 +30,7 @@ public class EnemyMove : MonoBehaviour
     Animator _animator;
     /// <summary>スプライトレンダラー</summary>
     SpriteRenderer _sprite;
+    /// <summary>ランダムな数字が入る</summary>
     int _number;
 
     private void Start()
@@ -35,31 +38,24 @@ public class EnemyMove : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
+        EnemySprite();
     }
 
     private void OnEnable()
     {
-        _timer = 0f;
-        //スピードをランダムで決める
-        _speed = Random.Range(_minimumSpeed, _maximumSpeed);
+        _timer = 0f;       
+        _speed = Random.Range(_minimumSpeed, _maximumSpeed);//スピードをランダムで決める
+        EnemySprite();
+    }
+
+    private void OnBecameInvisible()
+    {
+        //画面外に行ったら非アクティブにする
+        gameObject.SetActive(false);
     }
 
     private void Update()
-    {
-        //enemyの見た目を変える
-        if (_timer == 0)
-        {
-            _number = Random.Range(0, _enemySprite.Count);
-            _sprite.sprite = _enemySprite[_number];
-            //アニメーションがあったら変える
-            if (_animator != null)
-            {
-                _animator.runtimeAnimatorController = _enemyAnim[_number];
-                //移動速度によってアニメーションのスピードを変える
-                _animator.speed = _speed / _animSpeedOffset;
-            }            
-        }
-        
+    {   
         //移動
         if(_dir)
         {           
@@ -72,7 +68,22 @@ public class EnemyMove : MonoBehaviour
 
         //タイマー
         _timer += Time.deltaTime;
-        //時間制限が来たら非アクティブにする
-        if (_timer >= _timeLimit)gameObject.SetActive(false);
+    }
+
+    /// <summary>//enemyの見た目とアニメーションを変える</summary>
+    void EnemySprite()
+    {
+        //enemyの見た目を変える
+        _number = Random.Range(0, _enemySprite.Count);
+        _sprite.sprite = _enemySprite[_number];//不具合
+
+        //アニメーションがあったら
+        if (_animator != null)
+        {
+            //アニメーションを変える
+            _animator.runtimeAnimatorController = _enemyAnim[_number];
+            //移動速度によってアニメーションのスピードを変える
+            _animator.speed = _speed / _animSpeedOffset;
+        }
     }
 }
