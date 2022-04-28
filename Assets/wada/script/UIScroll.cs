@@ -16,7 +16,7 @@ public class UIScroll : MonoBehaviour
 
         if (_rectTransform.anchoredPosition.x <= - 1920f)
         {
-            _rectTransform.anchoredPosition = new Vector2(2210f, 0);
+            _rectTransform.anchoredPosition = new Vector2(2207f, 0);
         }
     }
 }
