@@ -38,23 +38,14 @@ public class EnemyMove : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
+        EnemySprite();
     }
 
     private void OnEnable()
     {
         _timer = 0f;       
         _speed = Random.Range(_minimumSpeed, _maximumSpeed);//スピードをランダムで決める
-
-        //enemyの見た目を変える
-        _number = Random.Range(0, _enemySprite.Count);
-        _sprite.sprite = _enemySprite[_number];
-        //アニメーションがあったら変える
-        if (_animator != null)
-        {
-            _animator.runtimeAnimatorController = _enemyAnim[_number];
-            //移動速度によってアニメーションのスピードを変える
-            _animator.speed = _speed / _animSpeedOffset;
-        }
+        EnemySprite();
     }
 
     private void OnBecameInvisible()
@@ -64,21 +55,7 @@ public class EnemyMove : MonoBehaviour
     }
 
     private void Update()
-    {
-        /*//enemyの見た目を変える
-        if (_timer == 0)
-        {
-            _number = Random.Range(0, _enemySprite.Count);
-            _sprite.sprite = _enemySprite[_number];
-            //アニメーションがあったら変える
-            if (_animator != null)
-            {
-                _animator.runtimeAnimatorController = _enemyAnim[_number];
-                //移動速度によってアニメーションのスピードを変える
-                _animator.speed = _speed / _animSpeedOffset;
-            }            
-        }*/
-        
+    {   
         //移動
         if(_dir)
         {           
@@ -91,5 +68,22 @@ public class EnemyMove : MonoBehaviour
 
         //タイマー
         _timer += Time.deltaTime;
+    }
+
+    /// <summary>//enemyの見た目とアニメーションを変える</summary>
+    void EnemySprite()
+    {
+        //enemyの見た目を変える
+        _number = Random.Range(0, _enemySprite.Count);
+        _sprite.sprite = _enemySprite[_number];//不具合
+
+        //アニメーションがあったら
+        if (_animator != null)
+        {
+            //アニメーションを変える
+            _animator.runtimeAnimatorController = _enemyAnim[_number];
+            //移動速度によってアニメーションのスピードを変える
+            _animator.speed = _speed / _animSpeedOffset;
+        }
     }
 }
