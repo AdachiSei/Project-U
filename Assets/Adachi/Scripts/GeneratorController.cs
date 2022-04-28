@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>使用するジェネレーターを切り替えるスクリプト</summary>
+
 public class GeneratorController : MonoBehaviour
 {
     //タイマー

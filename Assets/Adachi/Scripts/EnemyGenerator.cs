@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>enemyを生成するジェネレーターのスクリプト</summary>
+
 public class EnemyGenerator : MonoBehaviour
 {
     /// <summary>生成するもの</summary>

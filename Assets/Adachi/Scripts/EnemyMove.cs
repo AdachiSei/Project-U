@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>enemyを動かすスクリプト</summary>
+
 public class EnemyMove : MonoBehaviour
 {
     /// <summary>剛体</summary>
@@ -28,6 +30,7 @@ public class EnemyMove : MonoBehaviour
     Animator _animator;
     /// <summary>スプライトレンダラー</summary>
     SpriteRenderer _sprite;
+    /// <summary>ランダムな数字が入る</summary>
     int _number;
 
     private void Start()
@@ -39,9 +42,19 @@ public class EnemyMove : MonoBehaviour
 
     private void OnEnable()
     {
-        _timer = 0f;
-        //スピードをランダムで決める
-        _speed = Random.Range(_minimumSpeed, _maximumSpeed);
+        _timer = 0f;       
+        _speed = Random.Range(_minimumSpeed, _maximumSpeed);//スピードをランダムで決める
+
+        //enemyの見た目を変える
+        _number = Random.Range(0, _enemySprite.Count);
+        _sprite.sprite = _enemySprite[_number];
+        //アニメーションがあったら変える
+        if (_animator != null)
+        {
+            _animator.runtimeAnimatorController = _enemyAnim[_number];
+            //移動速度によってアニメーションのスピードを変える
+            _animator.speed = _speed / _animSpeedOffset;
+        }
     }
 
     private void OnBecameInvisible()
@@ -52,7 +65,7 @@ public class EnemyMove : MonoBehaviour
 
     private void Update()
     {
-        //enemyの見た目を変える
+        /*//enemyの見た目を変える
         if (_timer == 0)
         {
             _number = Random.Range(0, _enemySprite.Count);
@@ -64,7 +77,7 @@ public class EnemyMove : MonoBehaviour
                 //移動速度によってアニメーションのスピードを変える
                 _animator.speed = _speed / _animSpeedOffset;
             }            
-        }
+        }*/
         
         //移動
         if(_dir)
