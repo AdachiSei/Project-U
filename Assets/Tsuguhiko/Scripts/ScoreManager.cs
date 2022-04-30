@@ -7,9 +7,34 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    int _score = 0;
+    int _initScore = 0;
 
     [SerializeField,Header("現在のスコア")]int _currentScore;
+
+    public int CurrentScore 
+    { get 
+        { 
+            return _currentScore;
+        }
+        set
+        {
+            _currentScore = value;
+        }
+    }
+
+    static int _totalScore = 0;
+
+    public static int TotalScore
+    {
+        get
+        {
+            return _totalScore;
+        }
+        set
+        {
+            _totalScore = value;
+        }
+    }
     void Start()
     {
         
