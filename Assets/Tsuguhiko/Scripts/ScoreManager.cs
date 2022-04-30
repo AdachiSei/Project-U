@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-   [SerializeField] Difficulty _difficulty;
+   [SerializeField,Header("現在の難易度")] Difficulty _difficulty;
 
     int _initScore = 0;
 
