@@ -1128,16 +1128,52 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2398993802359924511, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _scrollMax
+      value: 2207
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993802359924511, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
       propertyPath: _ScrollSpeed
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993802359924511, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _scrollMinimum
+      value: -1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993802359924511, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _scrollDirection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993802653910790, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _scrollMax
+      value: 2207
       objectReference: {fileID: 0}
     - target: {fileID: 2398993802653910790, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
       propertyPath: _ScrollSpeed
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 2398993802653910790, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _scrollMinimum
+      value: -1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993802653910790, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _scrollDirection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993803653501618, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _scrollMax
+      value: 2207
+      objectReference: {fileID: 0}
     - target: {fileID: 2398993803653501618, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
       propertyPath: _ScrollSpeed
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993803653501618, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _scrollMinimum
+      value: -1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993803653501618, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _scrollDirection
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2398993803676860891, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
       propertyPath: m_Name
