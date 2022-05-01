@@ -612,7 +612,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1257900489
 GameObject:
@@ -1015,6 +1015,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2398993802359924511, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _scrollMax
+      value: 2207
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993802359924511, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _ScrollSpeed
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993802359924511, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _scrollMinimum
+      value: -1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993802653910790, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _scrollMax
+      value: 2207
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993802653910790, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _ScrollSpeed
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993802653910790, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _scrollMinimum
+      value: -1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993803653501618, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _scrollMax
+      value: 2207
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993803653501618, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _ScrollSpeed
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398993803653501618, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
+      propertyPath: _scrollMinimum
+      value: -1920
+      objectReference: {fileID: 0}
     - target: {fileID: 5101320353404604935, guid: affb5a35f8cbf604aaf1ea1d1630307a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
