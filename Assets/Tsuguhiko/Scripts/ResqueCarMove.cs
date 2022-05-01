@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class ResqueCarMove : MonoBehaviour
 {
+    GameManager _gameManager => GetComponent<GameManager>();
+
     /// <summary>救急車のRigidBody2Dのメンバ変数</summary>
     Rigidbody2D _rb2d ;
 
@@ -23,6 +25,7 @@ public class ResqueCarMove : MonoBehaviour
     /// </summary>
     void Start()
     {
+        
         _rb2d = GetComponent<Rigidbody2D>(); // 救急車のRigidBody2Dを取得 (救急車の操作に必要)
     }
 
@@ -58,5 +61,11 @@ public class ResqueCarMove : MonoBehaviour
         }
         
         _rb2d.velocity = new Vector2(_speed, _rb2d.velocity.y); // 救急車を移動 Vextor2(x軸スピード、y軸スピード(元のまま))
+    }
+
+
+    void OnTriggerEnter2D(Collider2D col2D)
+    {
+        _gameManager.DecreaseScore();
     }
 }
