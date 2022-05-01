@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3272460579209251545}
   - component: {fileID: 1731006162307249154}
   m_Layer: 0
-  m_Name: HumanForHard
+  m_Name: EnemyForHard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,8 +125,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 28c43073dfb5b6f40a87d21467526b21, type: 2}
   _dir: 1
   _maximumSpeed: 10
-  _minimumSpeed: 5
-  _animSpeedOffset: 10
+  _minimumSpeed: 7
 --- !u!70 &3272460579209251545
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

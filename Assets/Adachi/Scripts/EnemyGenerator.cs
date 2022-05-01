@@ -38,6 +38,12 @@ public class EnemyGenerator : MonoBehaviour
     int _number;
     /// <summary>Trueなら車、falseなら人</summary>
     [SerializeField,Header("Trueなら車、falseなら人")]bool _mode;
+    //道路の一段目
+    float _firstStage = 3.53f;
+    //道路のニ段目
+    float _secondStage = 1.25f;
+    //道路の三段目
+    float _thirdStage = -1.03f;
 
     void Start()
     {
@@ -58,34 +64,37 @@ public class EnemyGenerator : MonoBehaviour
         {
             //判定回数の制御
             yield return new WaitForSeconds(_JUDGMENTTIME);
-            //生成するオブジェクトをランダムで決める
-            _enemyNumber = Random.Range(0, _enemy.Count);
+            
+            //生成頻度をランダムで決める
+            _intervalTime = Random.Range(_minimumTime, _maximumTime);
             //生成する座標をランダムで決める
             if (_mode)
             {
                 _number = Random.Range(0, 3);
                 if (_number == 0)
                 {
-                    _pos = new Vector3(10f, 3.53f, 0f);//道路の一段目
+                    _pos = new Vector3(_rightLimit, _firstStage, 0f);//道路の一段目                                           
+                    InstantiateBullet(_pos, _enemy[0].transform.rotation);//生成する
                 }
                 else if (_number == 1)
                 {
-                    _pos = new Vector3(10f, 1.25f, 0f);//道路のニ段目
+                    _pos = new Vector3(_leftLimit, _secondStage, 0f);//道路のニ段目
+                    InstantiateBullet(_pos, _enemy[1].transform.rotation);//生成する
                 }
                 else if (_number == 2)
                 {
-                    _pos = new Vector3(10f, -1.03f, 0f);//道路の三段目
+                    _pos = new Vector3(_rightLimit, _thirdStage, 0f);//道路の三段目                         
+                    InstantiateBullet(_pos, _enemy[0].transform.rotation);//生成する
                 }
             }
             else
             {
+                //生成するオブジェクトをランダムで決める
+                _enemyNumber = Random.Range(0, _enemy.Count);
                 _pos = new Vector3(Random.Range(_leftLimit, _rightLimit), Random.Range(_downLimit, _upperLimit), 0f);
-            }
-            
-            //生成頻度をランダムで決める
-            _intervalTime = Random.Range(_minimumTime, _maximumTime);
-            //生成する
-            InstBullet(_pos, _enemy[_enemyNumber].transform.rotation);
+                //生成する
+                InstantiateBullet(_pos, _enemy[_enemyNumber].transform.rotation);
+            }          
             //オブジェクト生成の時間間隔
             yield return new WaitForSeconds(_intervalTime);
         }
@@ -98,7 +107,7 @@ public class EnemyGenerator : MonoBehaviour
     /// </summary>
     /// <param name="position">生成位置</param>
     /// <param name="rotation">生成時の回転</param>
-    void InstBullet(Vector3 position, Quaternion rotation)
+    void InstantiateBullet(Vector3 position, Quaternion rotation)
     {
         //アクティブでないオブジェクトをenemyの中から探索
         foreach (Transform t in _enemys)
@@ -113,7 +122,6 @@ public class EnemyGenerator : MonoBehaviour
             }
         }
         //非アクティブなオブジェクトがない場合新規生成
-
         //生成時にenemyの子オブジェクトにする
         Instantiate(_enemy[_enemyNumber], position, rotation, _enemys);
     }
