@@ -23,7 +23,7 @@ public class EnemyMove : MonoBehaviour
     /// <summary>タイムリミット</summary>
     float _timeLimit = 10f;
     /// <summary>アニメーションのスピードを補正する</summary>
-    [SerializeField,Header("アニメーションのスピードを補正する（_speed / _animSpeedOffset）")]float _animSpeedOffset = 10f;
+    float _animSpeedOffset = 10f;
     /// <summary>アニメーター</summary>
     Animator _animator;
     /// <summary>スプライトレンダラー</summary>

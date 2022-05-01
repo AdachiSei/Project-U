@@ -11,7 +11,7 @@ public class GeneratorController : MonoBehaviour
     ///タイムリミット
     float _timeLimit;
     /// <summary>最大のタイムリミット</summary>
-    [SerializeField,Header("最大のタイムリミット")]float _maximumTimeLimit = 10f;
+    [SerializeField, Header("最大のタイムリミット")] float _maximumTimeLimit = 10f;
     /// <summary>最小のタイムリミット</summary>
     [SerializeField, Header("最小のタイムリミット")] float _minimumTimeLimit = 5f;
     /// <summary>ジェネレーター</summary>
@@ -20,7 +20,8 @@ public class GeneratorController : MonoBehaviour
     [SerializeField, Header("待ち時間（黄色信号）")] float _waitTime = 2f;
     /// <summary>判定回数の制御</summary>
     const float _JUDGMENTTIME = 1 / 60;
-    void OnEnable()
+
+    private void Awake()
     {
         StartCoroutine(TrafficSignal());
     }
@@ -28,7 +29,7 @@ public class GeneratorController : MonoBehaviour
     void Update()
     {
         //タイマー
-        _timer += Time.deltaTime;    
+        _timer += Time.deltaTime;
     }
 
     /// <summary>
@@ -42,7 +43,7 @@ public class GeneratorController : MonoBehaviour
             //タイムリミットになったら
             if (_timer >= _timeLimit)
             {
-                //片方のジェネレーターが存在していたら
+                //片方のジェネレーターがアクティブ化していたら
                 if (_generator[0].activeSelf)
                 {
                     //非表示にする（赤信号）
@@ -51,8 +52,12 @@ public class GeneratorController : MonoBehaviour
                     yield return new WaitForSeconds(_waitTime);
                     //表示する（青信号）
                     _generator[1].SetActive(true);
+                    //タイムリミットを決める
+                    _timeLimit = _maximumTimeLimit;
+                    //タイマーをリセット
+                    _timer = 0;
                 }
-                else
+                else//非アクティブ化していたら
                 {
                     //非表示にする（赤信号）
                     _generator[1].SetActive(false);
@@ -60,13 +65,14 @@ public class GeneratorController : MonoBehaviour
                     yield return new WaitForSeconds(_waitTime);
                     //表示する（青信号）
                     _generator[0].SetActive(true);
+                    //タイムリミットを決める
+                    _timeLimit = _minimumTimeLimit;
+                    //タイマーをリセット
+                    _timer = 0;
                 }
-                //タイマーをリセット
-                _timer = 0;
-                //タイムリミットをランダムで決める
-                _timeLimit = Random.Range(_minimumTimeLimit, _maximumTimeLimit);
             }
             yield return new WaitForSeconds(_JUDGMENTTIME);
-        }      
+        }
+
     }
 }
