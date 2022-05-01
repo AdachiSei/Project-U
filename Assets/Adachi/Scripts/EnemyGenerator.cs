@@ -34,6 +34,10 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField, Header("enemyを管理する空のオブジェクトの名前")] string _enemysName;
     //弾を保持（プーリング）する空のオブジェクト
     Transform _enemys;
+    /// <summary>ランダムに入る数字</summary>
+    int _number;
+    /// <summary>Trueなら車、falseなら人</summary>
+    [SerializeField,Header("Trueなら車、falseなら人")]bool _mode;
 
     void Start()
     {
@@ -57,7 +61,27 @@ public class EnemyGenerator : MonoBehaviour
             //生成するオブジェクトをランダムで決める
             _enemyNumber = Random.Range(0, _enemy.Count);
             //生成する座標をランダムで決める
-            _pos = new Vector3(Random.Range(_leftLimit, _rightLimit), Random.Range(_downLimit, _upperLimit), 0f);
+            if (_mode)
+            {
+                _number = Random.Range(0, 3);
+                if (_number == 0)
+                {
+                    _pos = new Vector3(10f, 3.53f, 0f);//道路の一段目
+                }
+                else if (_number == 1)
+                {
+                    _pos = new Vector3(10f, 1.25f, 0f);//道路のニ段目
+                }
+                else if (_number == 2)
+                {
+                    _pos = new Vector3(10f, -1.03f, 0f);//道路の三段目
+                }
+            }
+            else
+            {
+                _pos = new Vector3(Random.Range(_leftLimit, _rightLimit), Random.Range(_downLimit, _upperLimit), 0f);
+            }
+            
             //生成頻度をランダムで決める
             _intervalTime = Random.Range(_minimumTime, _maximumTime);
             //生成する
