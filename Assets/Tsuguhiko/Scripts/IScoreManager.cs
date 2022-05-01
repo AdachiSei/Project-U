@@ -11,5 +11,5 @@ public interface IScoreManager
 
     void AddScore();
 
-    
+    void DecreaseScore();
 }

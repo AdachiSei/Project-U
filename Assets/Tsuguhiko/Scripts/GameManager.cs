@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour,IScoreManager
 {
+    [SerializeField] Animator _animator;
 
     [SerializeField, Header("ゲームタイマー")] float _gameTimer;
 
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour,IScoreManager
 
     void OnEnable()
     {
+        _animator = GetComponent<Animator>();
         _currentScore = _totalScore = 0;
     }
     void Start()
@@ -52,14 +54,14 @@ public class GameManager : MonoBehaviour,IScoreManager
     public void DecreaseScore()
     {
         TotalScore -= 10;
-       // InvincibleMode();
+       InvincibleMode();
     }
 
     
 
-   //public void InvincibleMode()
-   // {
-        
-   // }
+   public void InvincibleMode()
+   {
+        _animator.SetTrigger("Ambulance");
+   }
 
 }
