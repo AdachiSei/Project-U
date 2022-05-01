@@ -124,8 +124,8 @@ MonoBehaviour:
   - {fileID: 9100000, guid: e632a04be3cb06c47af2e0cdb1848c0f, type: 2}
   - {fileID: 9100000, guid: 28c43073dfb5b6f40a87d21467526b21, type: 2}
   _dir: 1
-  _maximumSpeed: 10
-  _minimumSpeed: 7
+  _maximumSpeed: 6
+  _minimumSpeed: 6
 --- !u!70 &3272460579209251545
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
