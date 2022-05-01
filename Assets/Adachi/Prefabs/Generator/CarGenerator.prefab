@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4969776688041576784
+--- !u!1 &1395393411901534858
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4969776688041576786}
-  - component: {fileID: 4969776688041576785}
+  - component: {fileID: 1395393411901534856}
+  - component: {fileID: 1395393411901534857}
   m_Layer: 0
-  m_Name: UpperSideGenerator
+  m_Name: CarGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &4969776688041576786
+  m_IsActive: 1
+--- !u!4 &1395393411901534856
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4969776688041576784}
+  m_GameObject: {fileID: 1395393411901534858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,25 +31,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4969776688041576785
+--- !u!114 &1395393411901534857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4969776688041576784}
+  m_GameObject: {fileID: 1395393411901534858}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e305bb9ee23ac74eb494443779c728c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy:
-  - {fileID: 7415266326199951040, guid: 9235065e9b73c6c47bfe50a56d39944e, type: 3}
+  - {fileID: 3338084230460089498, guid: 06e1f70dc57b4544b9217132b8efb5f3, type: 3}
+  - {fileID: 7446945388920436707, guid: eb6fb99688da7a94380547318457aca7, type: 3}
   _beginTime: 0
   _maximumTime: 0.1
-  _minimumTime: 3
-  _upperLimit: 7
-  _downLimit: 7
-  _rightLimit: 8
-  _leftLimit: -8
-  _enemysName: UpperPooling
+  _minimumTime: 1
+  _upperLimit: 4
+  _downLimit: -4
+  _rightLimit: 10
+  _leftLimit: -10
+  _enemysName: RightPooling
+  _mode: 1
