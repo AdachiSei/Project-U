@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>enemyを動かすスクリプト</summary>
+
 public class EnemyMove : MonoBehaviour
 {
     /// <summary>剛体</summary>
@@ -18,8 +20,6 @@ public class EnemyMove : MonoBehaviour
     [SerializeField, Header("最大スピード")] float _maximumSpeed = 10f;
     /// <summary>最小スピード</summary>
     [SerializeField, Header("最小スピード")] float _minimumSpeed = 2f;
-    /// <summary>タイマー</summary>
-    float _timer;
     /// <summary>タイムリミット</summary>
     float _timeLimit = 10f;
     /// <summary>アニメーションのスピードを補正する</summary>
@@ -28,6 +28,7 @@ public class EnemyMove : MonoBehaviour
     Animator _animator;
     /// <summary>スプライトレンダラー</summary>
     SpriteRenderer _sprite;
+    /// <summary>ランダムな数字が入る</summary>
     int _number;
 
     private void Start()
@@ -35,33 +36,27 @@ public class EnemyMove : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
+        EnemySprite();
     }
 
     private void OnEnable()
+    {       
+        _speed = Random.Range(_minimumSpeed, _maximumSpeed);//スピードをランダムで決める
+        EnemySprite();
+    }
+
+    private void OnBecameInvisible()
     {
-        _timer = 0f;
-        //スピードをランダムで決める
-        _speed = Random.Range(_minimumSpeed, _maximumSpeed);
+        //画面外に行ったら非アクティブにする
+        gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        //enemyの見た目を変える
-        if (_timer == 0)
-        {
-            _number = Random.Range(0, _enemySprite.Count);
-            _sprite.sprite = _enemySprite[_number];
-            //アニメーションがあったら変える
-            if (_animator != null)
-            {
-                _animator.runtimeAnimatorController = _enemyAnim[_number];
-                //移動速度によってアニメーションのスピードを変える
-                _animator.speed = _speed / _animSpeedOffset;
-            }            
-        }
-        
+        _sprite.sprite = _enemySprite[_number];
+
         //移動
-        if(_dir)
+        if (_dir)
         {           
             _rb.velocity = gameObject.transform.rotation * new Vector3(0, -_speed, 0);
         }
@@ -69,10 +64,21 @@ public class EnemyMove : MonoBehaviour
         {
             _rb.velocity = gameObject.transform.rotation * new Vector3(0, _speed, 0);
         }
+    }
 
-        //タイマー
-        _timer += Time.deltaTime;
-        //時間制限が来たら非アクティブにする
-        if (_timer >= _timeLimit)gameObject.SetActive(false);
+    /// <summary>//enemyの見た目とアニメーションを変える</summary>
+    void EnemySprite()
+    {
+        //enemyの見た目を変える
+        _number = Random.Range(0, _enemySprite.Count);
+
+        //アニメーションがあったら
+        if (_animator != null)
+        {
+            //アニメーションを変える
+            if (_animator != null) _animator.runtimeAnimatorController = _enemyAnim[_number];
+            //移動速度によってアニメーションのスピードを変える
+            _animator.speed = _speed / _animSpeedOffset;
+        }
     }
 }
