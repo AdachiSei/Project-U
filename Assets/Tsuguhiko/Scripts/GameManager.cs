@@ -58,7 +58,9 @@ public class GameManager : MonoBehaviour,IScoreManager
     }
 
     
-
+   /// <summary>
+   /// 敵に当たった時数秒だけ無敵モードになる。
+   /// </summary>
    public void InvincibleMode()
    {
         _animator.SetTrigger("Ambulance");
