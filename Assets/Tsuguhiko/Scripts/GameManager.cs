@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour,IScoreManager
 {
+    /// <summary>救急車のアニメーターのメンバ変数</summary>
     [SerializeField] Animator _animator;
 
     [SerializeField, Header("ゲームタイマー")] float _gameTimer;
