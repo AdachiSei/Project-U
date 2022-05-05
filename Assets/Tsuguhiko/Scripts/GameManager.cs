@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour,IScoreManager
     [SerializeField] Animator _animator;
     /// <summary>ゲームの制限時間のメンバ変数</summary>
     [SerializeField, Header("ゲームタイマー")] float _gameTimer;
-
+    /// <summary>現在のスコアのメンバ変数</summary>
     [SerializeField, Header("現在のスコア")] int _currentScore;
 
     public int CurrentScore {get => _currentScore;  set => _currentScore = value; }
