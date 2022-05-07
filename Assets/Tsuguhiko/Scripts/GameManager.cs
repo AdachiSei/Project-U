@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour,IScoreManager
     [SerializeField, Header("現在のスコア")] int _currentScore;
     /// <summary>_currentScoreのプロパティ</summary>
     public int CurrentScore {get => _currentScore;  set => _currentScore = value; }
-
+    /// <summary>リザルト時のトータルスコアのメンバ変数</summary>
     static int _totalScore;
    
     public static int TotalScore { get => _totalScore; set => _totalScore = value; }
