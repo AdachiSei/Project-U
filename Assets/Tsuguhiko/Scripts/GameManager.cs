@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour,IScoreManager
     public int CurrentScore {get => _currentScore;  set => _currentScore = value; }
     /// <summary>リザルト時のトータルスコアのメンバ変数</summary>
     static int _totalScore;
-   
+    /// <summary>_totalScoreのプロパティ</summary>
     public static int TotalScore { get => _totalScore; set => _totalScore = value; }
 
     [SerializeField, Header("タイマーテキスト")] Text _timerText;
