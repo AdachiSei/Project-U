@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour,IScoreManager
     static int _totalScore;
     /// <summary>_totalScoreのプロパティ</summary>
     public static int TotalScore { get => _totalScore; set => _totalScore = value; }
-
+    /// <summary>タイマーテキストのメンバ変数</summary>
     [SerializeField, Header("タイマーテキスト")] Text _timerText;
 
     [SerializeField, Header("スコアテキスト")] Text _scoreText;
