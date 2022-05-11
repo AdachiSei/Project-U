@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour,IScoreManager
     /// <summary>スコアテキストのメンバ変数</summary>
     [SerializeField, Header("スコアテキスト")] Text _scoreText;
 
+    /// <summary>
+    /// Animatorの取得と現在のスコアのリセット
+    /// </summary>
     void OnEnable()
     {
         _animator = GetComponent<Animator>();
