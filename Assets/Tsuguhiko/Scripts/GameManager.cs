@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour,IScoreManager
     public static int TotalScore { get => _totalScore; set => _totalScore = value; }
     /// <summary>タイマーテキストのメンバ変数</summary>
     [SerializeField, Header("タイマーテキスト")] Text _timerText;
-
+    /// <summary>スコアテキストのメンバ変数</summary>
     [SerializeField, Header("スコアテキスト")] Text _scoreText;
 
     void OnEnable()
