@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour,IScoreManager
         _animator = GetComponent<Animator>();
         _currentScore = _totalScore = 0;
     }
+    /// <summary>
+    /// ゲーム開始時にトータルスコアと現在のスコアを同じにする
+    /// </summary>
     void Start()
     {
         TotalScore = CurrentScore;
