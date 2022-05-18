@@ -42,7 +42,9 @@ public class GameManager : MonoBehaviour,IScoreManager
         TotalScore = CurrentScore;
     }
 
-    
+    /// <summary>
+    /// スコアとタイマーの計測
+    /// </summary>
     void Update()
     {
 
